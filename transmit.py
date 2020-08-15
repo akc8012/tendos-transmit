@@ -4,7 +4,7 @@ window.title('TendosTransmit')
 
 
 def click_transmit():
-    print(f'hello "{title.get()}"')
+    print(f'title "{title.get()}", description: "{description.get()}"')
 
 
 FONT_FACE = 'Cantarell'
