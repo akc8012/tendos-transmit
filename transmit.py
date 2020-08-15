@@ -2,25 +2,30 @@ import tkinter as tk
 window = tk.Tk()
 
 
-def click_button():
-    print('you have touched me')
+def click_transmit():
+    print(f'hello "{title.get()}"')
 
 
-font_face = 'Cantarell'
+FONT_FACE = 'Cantarell'
 
 tk.Label(
     text='TendosTransmit',
-    font=(font_face, 24, 'bold')
+    font=(FONT_FACE, 24, 'bold')
 ).pack()
 
 tk.Label(
     text='The podcast deployment tool of the future.',
-    font=(font_face, 11, 'italic')
+    font=(FONT_FACE, 11, 'italic')
+).pack()
+
+title = tk.StringVar()
+tk.Entry(
+    textvariable=title
 ).pack()
 
 tk.Button(
-    text='touch me',
-    command=click_button
+    text='transmit',
+    command=click_transmit
 ).pack()
 
 window.mainloop()
