@@ -8,16 +8,16 @@ class Transmit:
         tk.Label(
             text='TendosTransmit',
             font=(FONT_FACE, 24, 'bold')
-        ).grid(row=0)
+        ).grid(row=0, columnspan=2)
 
         tk.Label(
             text='The podcast deployment tool of the future.',
             font=(FONT_FACE, 11, 'italic')
-        ).grid(row=1)
+        ).grid(row=1, columnspan=2)
 
         tk.Label(
             text='title'
-        ).grid(row=2)
+        ).grid(row=2, sticky='W')
 
         self.title = tk.StringVar()
         tk.Entry(
@@ -26,7 +26,7 @@ class Transmit:
 
         tk.Label(
             text='description'
-        ).grid(row=3)
+        ).grid(row=3, sticky='W')
 
         # TODO: Use a grid to arrange these instead
         self.description = tk.StringVar()
@@ -37,7 +37,7 @@ class Transmit:
         tk.Button(
             text='transmit',
             command=self.click_transmit
-        ).grid(row=4)
+        ).grid(row=4, columnspan=2)
 
     def click_transmit(self):
         print(
