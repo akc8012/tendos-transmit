@@ -5,4 +5,5 @@ window = tk.Tk()
 window.title('TendosTransmit')
 
 transmit = Transmit()
+
 window.mainloop()
