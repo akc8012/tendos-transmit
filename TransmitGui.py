@@ -3,7 +3,7 @@ import tkinter as tk
 FONT_FACE = 'Cantarell'
 
 
-class Transmit:
+class TransmitGui:
     def __init__(self):
         tk.Label(
             text='TendosTransmit',
@@ -35,7 +35,7 @@ class Transmit:
         ).grid(row=3, column=1)
 
         tk.Button(
-            text='transmit',
+            text='Transmit',
             command=self.click_transmit
         ).grid(row=4, columnspan=2)
 
