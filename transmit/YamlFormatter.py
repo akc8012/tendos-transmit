@@ -1,6 +1,6 @@
 import yaml
 
 
-class YamlWriter:
-    def write(self, data):
+class YamlFormatter:
+    def format(self, data):
         return yaml.dump(data, None)

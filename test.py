@@ -1,5 +1,5 @@
 import unittest
-from transmit.YamlWriter import YamlWriter
+from transmit.YamlFormatter import YamlFormatter
 
 
 class TestYamlWriter(unittest.TestCase):
@@ -8,7 +8,7 @@ class TestYamlWriter(unittest.TestCase):
         YamlWriter can output nothing when given nothing
         """
         data = {}
-        result = YamlWriter().write(data)
+        result = YamlFormatter().format(data)
 
         self.assertEqual(result, '{}\n')
 
@@ -17,7 +17,7 @@ class TestYamlWriter(unittest.TestCase):
         YamlWriter can output single key-value pair
         """
         data = {'hello': 'friends'}
-        result = YamlWriter().write(data)
+        result = YamlFormatter().format(data)
 
         self.assertEqual(result, 'hello: friends\n')
 
@@ -29,6 +29,6 @@ class TestYamlWriter(unittest.TestCase):
             'goodbye': 'world',
             'stonk_value': 1200
         }
-        result = YamlWriter().write(data)
+        result = YamlFormatter().format(data)
 
         self.assertEqual(result, 'goodbye: world\nstonk_value: 1200\n')
