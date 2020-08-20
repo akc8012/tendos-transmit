@@ -1,16 +1,16 @@
 import unittest
 from transmit.YamlFormatter import YamlFormatter
+from transmit.YamlFormatter import YamlError
 
 
 class TestYamlWriter(unittest.TestCase):
-    def test_yaml_write_none(self):
+    def test_yaml_write_nothing(self):
         """
         YamlWriter can output nothing when given nothing
         """
-        data = {}
-        result = YamlFormatter().format(data)
-
-        self.assertEqual(result, '{}\n')
+        self.assertEqual(YamlFormatter().format({}), '{}\n')
+        self.assertEqual(YamlFormatter().format(''), "''\n")
+        self.assertRaises(YamlError, YamlFormatter().format, None)
 
     def test_yaml_write_single(self):
         """
