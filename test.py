@@ -1,6 +1,6 @@
 import unittest
-from transmit.YamlFormatter import YamlFormatter
-from transmit.YamlFormatter import YamlError
+from transmit.yaml import YamlFormatter
+from transmit.yaml import YamlError
 
 
 class TestYamlWriter(unittest.TestCase):
