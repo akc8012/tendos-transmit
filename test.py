@@ -3,6 +3,15 @@ from transmit.YamlWriter import YamlWriter
 
 
 class TestYamlWriter(unittest.TestCase):
+    def test_yaml_write_none(self):
+        """
+        YamlWriter can output nothing when given nothing
+        """
+        data = {}
+        result = YamlWriter().write(data)
+
+        self.assertEqual(result, '{}\n')
+
     def test_yaml_write_single(self):
         """
         YamlWriter can output single key-value pair
