@@ -1,6 +1,6 @@
 import tkinter as tk
-from Transmit import TransmitGui
-from YamlWriter import YamlWriter
+from transmit.TransmitGui import TransmitGui
+from transmit.YamlWriter import YamlWriter
 
 window = tk.Tk()
 window.title('TendosTransmit')
