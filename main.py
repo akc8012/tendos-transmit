@@ -1,6 +1,6 @@
 import tkinter as tk
 from transmit.gui import TransmitGui
-from transmit.yaml import YamlFormatter
+from transmit.io import YamlFormatter
 
 window = tk.Tk()
 window.title('TendosTransmit')

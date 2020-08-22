@@ -12,3 +12,9 @@ class YamlFormatter:
 class YamlError(RuntimeError):
     def __init__(self, arg):
         self.args = arg
+
+
+class FileWriter():
+    def write(self, data):
+        with open('output.txt', 'w') as text_file:
+            print(data, file=text_file)

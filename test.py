@@ -1,6 +1,7 @@
 import unittest
-from transmit.yaml import YamlFormatter
-from transmit.yaml import YamlError
+from transmit.io import YamlFormatter
+from transmit.io import YamlError
+from transmit.io import FileWriter
 
 
 class TestYamlWriter(unittest.TestCase):
@@ -32,3 +33,14 @@ class TestYamlWriter(unittest.TestCase):
         result = YamlFormatter().format(data)
 
         self.assertEqual(result, 'goodbye: world\nstonk_value: 1200\n')
+
+
+class TestFileWriter(unittest.TestCase):
+    def test_file_write(self):
+        """
+        FileWriter does not blowup
+        """
+        data = 'kinda bug and kinda snacks!'
+        FileWriter().write(data)
+
+        self.assertTrue(True)
