@@ -16,5 +16,5 @@ class YamlError(RuntimeError):
 
 class FileWriter():
     def write(self, data):
-        with open('output.txt', 'w') as text_file:
+        with open('output.yml', 'w') as text_file:
             print(data, file=text_file)
