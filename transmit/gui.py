@@ -30,7 +30,6 @@ class TransmitGui:
             text='description'
         ).grid(row=3, sticky='W')
 
-        # TODO: Use a grid to arrange these instead
         self.description = tk.StringVar()
         tk.Entry(
             textvariable=self.description,
