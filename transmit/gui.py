@@ -1,4 +1,6 @@
 import tkinter as tk
+# TODO: pylint: disable=import-error
+from transmit.io import YamlFormatter
 
 FONT_FACE = 'Cantarell'
 
@@ -40,6 +42,6 @@ class TransmitGui:
         ).grid(row=4, columnspan=2)
 
     def click_transmit(self):
-        print(
-            f'title "{self.title.get()}", description: "{self.description.get()}"'
-        )
+        output = YamlFormatter().format(
+            {'title': self.title.get(), 'description': self.description.get()})
+        print(output)
