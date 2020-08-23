@@ -1,13 +1,10 @@
 import tkinter as tk
-# TODO: pylint: disable=import-error
-from transmit.io import YamlFormatter
-from transmit.io import FileWriter
 
 FONT_FACE = 'Cantarell'
 
 
 class TransmitGui:
-    def __init__(self):
+    def __init__(self, click_transmit):
         tk.Label(
             text='TendosTransmit',
             font=(FONT_FACE, 24, 'bold')
@@ -38,11 +35,5 @@ class TransmitGui:
 
         tk.Button(
             text='Transmit',
-            command=self.click_transmit
+            command=click_transmit
         ).grid(row=4, columnspan=2)
-
-    def click_transmit(self):
-        data = YamlFormatter().format(
-            {'title': self.title.get(), 'description': self.description.get()})
-        
-        FileWriter().write(data)
