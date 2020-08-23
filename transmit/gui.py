@@ -7,6 +7,11 @@ class TransmitGui:
     def __init__(self, click_transmit):
         self.click_transmit = click_transmit
 
+        self.add_decorations()
+        self.add_text_fields()
+        self.add_button()
+
+    def add_decorations(self):
         tk.Label(
             text='TendosTransmit',
             font=(FONT_FACE, 24, 'bold')
@@ -17,24 +22,25 @@ class TransmitGui:
             font=(FONT_FACE, 11, 'italic')
         ).grid(row=1, columnspan=2)
 
-        tk.Label(
-            text='title'
-        ).grid(row=2, sticky='W')
+    def add_text_fields(self):
+        self.field_label('title', 2)
 
         self.title = tk.StringVar()
         tk.Entry(
             textvariable=self.title,
         ).grid(row=2, column=1)
 
-        tk.Label(
-            text='description'
-        ).grid(row=3, sticky='W')
+        self.field_label('description', 3)
 
         self.description = tk.StringVar()
         tk.Entry(
             textvariable=self.description,
         ).grid(row=3, column=1)
 
+    def field_label(self, text, row):
+        tk.Label(text=text).grid(row=row, sticky='W')
+
+    def add_button(self):
         tk.Button(
             text='Transmit',
             command=self.transmit_button_clicked
