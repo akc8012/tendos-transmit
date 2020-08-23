@@ -23,23 +23,9 @@ class TransmitGui:
         ).grid(row=1, columnspan=2)
 
     def add_text_fields(self):
-        # TODO: TextEntry class
-        self.field_label('title', 2)
-        self.title = self.field_entry(2)
-
-        self.field_label('description', 3)
-        self.description = self.field_entry(3)
-
-    def field_label(self, text, row):
-        tk.Label(text=text).grid(row=row, sticky='W')
-
-    def field_entry(self, row):
-        var = tk.StringVar()
-        tk.Entry(
-            textvariable=var,
-        ).grid(row=row, column=1)
-
-        return var
+        # TODO: Manage row index in a more automatic way
+        self.title = TextEntry('title', 2).var
+        self.description = TextEntry('description', 3).var
 
     def add_button(self):
         tk.Button(
@@ -52,3 +38,18 @@ class TransmitGui:
             'title': self.title.get(),
             'description': self.description.get()
         })
+
+
+class TextEntry:
+    def __init__(self, label, row):
+        self.label(label, row)
+        self.var = self.field(row)
+
+    def label(self, text, row):
+        tk.Label(text=text).grid(row=row, sticky='W')
+
+    def field(self, row):
+        var = tk.StringVar()
+        tk.Entry(textvariable=var).grid(row=row, column=1)
+
+        return var
