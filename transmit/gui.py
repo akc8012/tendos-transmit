@@ -5,6 +5,8 @@ FONT_FACE = 'Cantarell'
 
 class TransmitGui:
     def __init__(self, click_transmit):
+        self.click_transmit = click_transmit
+
         tk.Label(
             text='TendosTransmit',
             font=(FONT_FACE, 24, 'bold')
@@ -35,5 +37,11 @@ class TransmitGui:
 
         tk.Button(
             text='Transmit',
-            command=click_transmit
+            command=self.transmit_button_clicked
         ).grid(row=4, columnspan=2)
+
+    def transmit_button_clicked(self):
+        self.click_transmit({
+            'title': self.title.get(),
+            'description': self.description.get()
+        })

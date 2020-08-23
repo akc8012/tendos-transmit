@@ -8,12 +8,9 @@ window = tk.Tk()
 window.title('TendosTransmit')
 
 
-def click_transmit():
-    data = YamlFormatter().format({
-        'title': transmit.title.get(),
-        'description': transmit.description.get()
-    })
-
+def click_transmit(input):
+    data = YamlFormatter().format(input)
+    print(data)
     FileWriter().write(data)
 
 
