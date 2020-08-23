@@ -1,24 +1,27 @@
 import tkinter as tk
 
-FONT_FACE = 'Cantarell'
-
 
 class TransmitGui:
     def __init__(self, click_transmit):
         self.click_transmit = click_transmit
 
-        self.add_decorations()
+        self.add_decorations(
+            'TendosTransmit',
+            'The podcast deployment tool of the future.'
+        )
         self.add_text_fields()
         self.add_button()
 
-    def add_decorations(self):
+    def add_decorations(self, header, subtitle):
+        FONT_FACE = 'Cantarell'
+
         tk.Label(
-            text='TendosTransmit',
+            text=header,
             font=(FONT_FACE, 24, 'bold')
         ).grid(row=0, columnspan=2)
 
         tk.Label(
-            text='The podcast deployment tool of the future.',
+            text=subtitle,
             font=(FONT_FACE, 11, 'italic')
         ).grid(row=1, columnspan=2)
 
