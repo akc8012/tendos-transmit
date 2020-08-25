@@ -26,6 +26,7 @@ class TransmitGui:
         ).grid(row=1, columnspan=2)
 
     def add_text_fields(self):
+        # TODO: Only ONE PLACE should need to change to add a field (aka no manual dict creation)
         # TODO: Manage row index in a more automatic way
         self.title = TextEntry('title', 2).var
         self.description = TextEntry('description', 3).var
