@@ -30,17 +30,23 @@ class TransmitGui:
         # TODO: Manage row index in a more automatic way
         self.title = TextEntry('title', 2).var
         self.description = TextEntry('description', 3).var
+        self.episode_number = TextEntry('episode #', 4).var
+        self.file = TextEntry('file', 5).var
+        self.file_url = TextEntry('file URL', 6).var
 
     def add_button(self):
         tk.Button(
             text='Transmit',
             command=self.transmit_button_clicked
-        ).grid(row=4, columnspan=2)
+        ).grid(row=7, columnspan=2)
 
     def transmit_button_clicked(self):
         self.click_transmit({
             'title': self.title.get(),
-            'description': self.description.get()
+            'description': self.description.get(),
+            'episode #': self.episode_number.get(),
+            'file': self.file.get(),
+            'file_url': self.file_url.get(),
         })
 
 
