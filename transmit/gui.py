@@ -29,10 +29,10 @@ class TransmitGui:
         # TODO: Only ONE PLACE should need to change to add a field (aka no manual dict creation)
         # TODO: Manage row index in a more automatic way
         self.title = TextEntry('title', 2).var
-        self.description = TextEntry('description', 3).var
+        self.summary = TextEntry('summary', 3).var
         self.episode_number = TextEntry('episode #', 4).var
-        self.file = TextEntry('file', 5).var
-        self.file_url = TextEntry('file URL', 6).var
+        self.mp3_file = TextEntry('mp3 file', 5).var
+        self.mp3_link = TextEntry('mp3 link', 6).var
 
     def add_button(self):
         tk.Button(
@@ -43,10 +43,9 @@ class TransmitGui:
     def transmit_button_clicked(self):
         self.click_transmit({
             'title': self.title.get(),
-            'description': self.description.get(),
-            'episode #': self.episode_number.get(),
-            'file': self.file.get(),
-            'file_url': self.file_url.get(),
+            'summary': self.summary.get(),
+            'asset_id': f'tendos-ep{self.episode_number.get()}',
+            'file_url': self.mp3_link.get(),
         })
 
 
