@@ -48,7 +48,10 @@ class TransmitGui:
 
     def add_text_fields(self):
         # TODO: Manage row index in a more automatic way
-        self.title = TextEntry('title', 3).var
+        title = TextEntry('title', 3)
+        title.entry.config(width=27)
+
+        self.title = title.var
         self.summary = TextText('summary', 4).text
         self.episode_number = TextEntry('episode #', 5).var
         self.mp3_link = TextEntry('mp3 link', 6).var
@@ -84,7 +87,8 @@ class TextEntry:
 
     def field(self, row):
         var = tk.StringVar()
-        tk.Entry(textvariable=var).grid(row=row, column=1)
+        self.entry = tk.Entry(textvariable=var)
+        self.entry.grid(row=row, column=1)
 
         return var
 
