@@ -7,6 +7,6 @@ window = tk.Tk()
 window.title('TendosTransmit')
 
 TransmitController()
-AudioFile('intro100.wav')
+AudioFile('intro100.mp3')
 
 window.mainloop()
