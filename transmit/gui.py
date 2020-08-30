@@ -30,6 +30,7 @@ class TransmitGui:
 
     def add_mp3_button(self):
         tk.Label(text='mp3 file').grid(row=2, sticky='W')
+        # TODO: change button text with filename after selection
         tk.Button(
             text='select mp3 file',
             command=self.select_mp3_file
@@ -38,13 +39,13 @@ class TransmitGui:
     def add_text_fields(self):
         # TODO: Manage row index in a more automatic way
         self.title = TextEntry('title', 3).var
-        self.summary = TextEntry('summary', 4).var
+        self.summary = TextText('summary', 4).text
         self.episode_number = TextEntry('episode #', 5).var
         self.mp3_link = TextEntry('mp3 link', 6).var
 
     def select_mp3_file(self):
         tk.filename = filedialog.askopenfilename(
-            initialdir="~", title="Select mp3 file", filetypes=[("Mp3 Files", "*.mp3")])
+            initialdir='~', title='Select mp3 file', filetypes=[('Mp3 Files', '*.mp3')])
         self.mp3_filename = tk.filename
         print(self.mp3_filename)
 
@@ -58,7 +59,7 @@ class TransmitGui:
     def transmit_button_clicked(self):
         self.click_transmit({
             'title': self.title.get(),
-            'summary': self.summary.get(),
+            'summary': self.summary.get('1.0', 'end-1c'),
             'asset_id': f'tendos-ep{self.episode_number.get()}',
             'file_url': self.mp3_link.get(),
         })
@@ -77,3 +78,16 @@ class TextEntry:
         tk.Entry(textvariable=var).grid(row=row, column=1)
 
         return var
+
+
+class TextText:
+    def __init__(self, label, row):
+        self.label(label, row)
+        self.field(row)
+
+    def label(self, text, row):
+        tk.Label(text=text).grid(row=row, sticky='W')
+
+    def field(self, row):
+        self.text = tk.Text()
+        self.text.grid(row=row, column=1)
