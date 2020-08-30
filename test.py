@@ -2,6 +2,7 @@ import unittest
 from transmit.io import YamlFormatter
 from transmit.io import YamlError
 from transmit.io import FileWriter
+from transmit.audio import AudioFile
 
 
 class TestYamlWriter(unittest.TestCase):
@@ -44,3 +45,12 @@ class TestFileWriter(unittest.TestCase):
         FileWriter().write(data)
 
         self.assertTrue(True)
+
+
+class TestAudioFile(unittest.TestCase):
+    def test_audio_duration(self):
+        """
+        AudioFile can get duration in seconds
+        """
+        audio = AudioFile('intro100.mp3')
+        self.assertEqual(audio.duration, 29.592)

@@ -5,7 +5,7 @@ from transmit.io import FileWriter
 
 class TransmitController:
     def __init__(self):
-        gui = TransmitGui(self.click_transmit)
+        TransmitGui(self.click_transmit)
 
     def click_transmit(self, input):
         data = YamlFormatter().format(input)
