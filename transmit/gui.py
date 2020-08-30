@@ -89,5 +89,5 @@ class TextText:
         tk.Label(text=text).grid(row=row, sticky='W')
 
     def field(self, row):
-        self.text = tk.Text()
+        self.text = tk.Text(width=30, height=5)
         self.text.grid(row=row, column=1)

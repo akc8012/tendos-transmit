@@ -48,6 +48,8 @@ class TestFileWriter(unittest.TestCase):
 
 
 class TestAudioFile(unittest.TestCase):
+    # TODO: empty path test
+
     def test_audio_duration(self):
         """
         AudioFile can get duration in seconds
