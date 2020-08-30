@@ -30,11 +30,18 @@ class TransmitGui:
 
     def add_mp3_button(self):
         tk.Label(text='mp3 file').grid(row=2, sticky='W')
-        # TODO: change button text with filename after selection
-        tk.Button(
+
+        self.mp3_button = tk.Button(
             text='select mp3 file',
             command=self.select_mp3_file
-        ).grid(row=2, column=1)
+        )
+        self.mp3_button.grid(row=2, column=1)
+
+    def select_mp3_file(self):
+        self.mp3_filename = filedialog.askopenfilename(
+            initialdir='~', title='Select mp3 file', filetypes=[('Mp3 Files', '*.mp3')])
+
+        self.mp3_button.config(text=self.mp3_filename)
 
     def add_text_fields(self):
         # TODO: Manage row index in a more automatic way
@@ -42,12 +49,6 @@ class TransmitGui:
         self.summary = TextText('summary', 4).text
         self.episode_number = TextEntry('episode #', 5).var
         self.mp3_link = TextEntry('mp3 link', 6).var
-
-    def select_mp3_file(self):
-        tk.filename = filedialog.askopenfilename(
-            initialdir='~', title='Select mp3 file', filetypes=[('Mp3 Files', '*.mp3')])
-        self.mp3_filename = tk.filename
-        print(self.mp3_filename)
 
     def add_transmit_button(self):
         tk.Button(
