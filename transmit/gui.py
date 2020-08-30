@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+import ntpath
 
 
 class TransmitGui:
@@ -38,10 +39,12 @@ class TransmitGui:
         self.mp3_button.grid(row=2, column=1)
 
     def select_mp3_file(self):
+        # TODO: don't set None files (if they cancel)
         self.mp3_filename = filedialog.askopenfilename(
             initialdir='~', title='Select mp3 file', filetypes=[('Mp3 Files', '*.mp3')])
 
-        self.mp3_button.config(text=self.mp3_filename)
+        filename_leaf = path_leaf(self.mp3_filename)
+        self.mp3_button.config(text=filename_leaf)
 
     def add_text_fields(self):
         # TODO: Manage row index in a more automatic way
@@ -64,6 +67,11 @@ class TransmitGui:
             'asset_id': f'tendos-ep{self.episode_number.get()}',
             'file_url': self.mp3_link.get(),
         })
+
+
+def path_leaf(path):
+    head, tail = ntpath.split(path)
+    return tail or ntpath.basename(head)
 
 
 class TextEntry:
