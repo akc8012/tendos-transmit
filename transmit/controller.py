@@ -9,10 +9,11 @@ class TransmitController:
         self.gui = TransmitGui(self.click_transmit)
 
     def click_transmit(self, input):
-        audio = AudioFile(self.gui.mp3_filename)
-        # BUG: this should be in minutes, not seconds
-        input['duration'] = audio.duration
-        input['length'] = audio.file_size
+        if hasattr(self.gui, 'mp3_filename'):
+            audio = AudioFile(self.gui.mp3_filename)
+            # BUG: this should be in minutes, not seconds
+            input['duration'] = audio.duration
+            input['length'] = audio.file_size
 
         data = YamlFormatter().format(input)
         print(data)
