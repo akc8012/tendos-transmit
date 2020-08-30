@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import filedialog
 
 
 class TransmitGui:
@@ -9,8 +10,10 @@ class TransmitGui:
             'TendosTransmit',
             'The podcast deployment tool of the future.'
         )
+
+        self.add_mp3_button()
         self.add_text_fields()
-        self.add_button()
+        self.add_transmit_button()
 
     def add_decorations(self, header, subtitle):
         FONT_FACE = 'Cantarell'
@@ -25,21 +28,33 @@ class TransmitGui:
             font=(FONT_FACE, 11, 'italic')
         ).grid(row=1, columnspan=2)
 
+    def add_mp3_button(self):
+        tk.Label(text='mp3 file').grid(row=2, sticky='W')
+        tk.Button(
+            text='select mp3 file',
+            command=self.select_mp3_file
+        ).grid(row=2, column=1)
+
     def add_text_fields(self):
-        # TODO: Only ONE PLACE should need to change to add a field (aka no manual dict creation)
         # TODO: Manage row index in a more automatic way
-        self.title = TextEntry('title', 2).var
-        self.summary = TextEntry('summary', 3).var
-        self.episode_number = TextEntry('episode #', 4).var
-        self.mp3_file = TextEntry('mp3 file', 5).var
+        self.title = TextEntry('title', 3).var
+        self.summary = TextEntry('summary', 4).var
+        self.episode_number = TextEntry('episode #', 5).var
         self.mp3_link = TextEntry('mp3 link', 6).var
 
-    def add_button(self):
+    def select_mp3_file(self):
+        tk.filename = filedialog.askopenfilename(
+            initialdir="~", title="Select mp3 file", filetypes=[("Mp3 Files", "*.mp3")])
+        self.mp3_file = tk.filename
+        print(self.mp3_file)
+
+    def add_transmit_button(self):
         tk.Button(
             text='Transmit',
             command=self.transmit_button_clicked
         ).grid(row=7, columnspan=2)
 
+    # TODO: this should be its own InputConversion class
     def transmit_button_clicked(self):
         self.click_transmit({
             'title': self.title.get(),
