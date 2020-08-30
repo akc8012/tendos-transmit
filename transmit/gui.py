@@ -45,8 +45,8 @@ class TransmitGui:
     def select_mp3_file(self):
         tk.filename = filedialog.askopenfilename(
             initialdir="~", title="Select mp3 file", filetypes=[("Mp3 Files", "*.mp3")])
-        self.mp3_file = tk.filename
-        print(self.mp3_file)
+        self.mp3_filename = tk.filename
+        print(self.mp3_filename)
 
     def add_transmit_button(self):
         tk.Button(
