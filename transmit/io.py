@@ -2,7 +2,6 @@ import yaml
 
 
 class YamlFormatter:
-    # TODO: values should format in order :)
     def format(self, data):
         if data is None:
             raise YamlError('data cannot be None')
