@@ -54,3 +54,10 @@ class TestAudioFile(unittest.TestCase):
         """
         audio = AudioFile('intro100.mp3')
         self.assertEqual(audio.duration, 29.592)
+
+    def test_audio_file_size(self):
+        """
+        AudioFile can get file size in bytes
+        """
+        audio = AudioFile('intro100.mp3')
+        self.assertEqual(audio.file_size, 591910)
