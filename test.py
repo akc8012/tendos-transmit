@@ -1,7 +1,5 @@
 import unittest
-from transmit.io import YamlFormatter
-from transmit.io import YamlError
-from transmit.io import FileWriter
+from transmit.io import YamlFormatter, YamlError, FileWriter, InputTranslator
 from transmit.audio import AudioFile
 
 
@@ -63,3 +61,12 @@ class TestAudioFile(unittest.TestCase):
         """
         audio = AudioFile('intro100.mp3')
         self.assertEqual(audio.file_size, 591910)
+
+
+class TestInputTranslator(unittest.TestCase):
+    def test_translate_no_data(self):
+        """
+        InputTranslator returns none given no data
+        """
+        data = InputTranslator().translate({})
+        self.assertIsNone(data)

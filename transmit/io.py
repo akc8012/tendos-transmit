@@ -18,3 +18,8 @@ class FileWriter():
     def write(self, data):
         with open('output.yml', 'w') as text_file:
             print(data, file=text_file)
+
+
+class InputTranslator:
+    def translate(self, data):
+        return None
