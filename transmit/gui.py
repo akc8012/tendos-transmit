@@ -64,6 +64,7 @@ class TransmitGui:
 
     # TODO: this should be its own InputConversion class
     def transmit_button_clicked(self):
+        # TODO: needs to generate date
         self.click_transmit({
             'title': self.title.get(),
             'summary': self.summary.get('1.0', 'end-1c'),
