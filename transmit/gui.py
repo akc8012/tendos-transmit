@@ -48,13 +48,13 @@ class TransmitGui:
 
     def add_text_fields(self):
         # TODO: Manage row index in a more automatic way
-        title = TextEntry('title', 3)
-        title.entry.config(width=27)
+        title = LabeledEntry('title', 3)
+        title.set_width(27)
 
-        self.title = title.var
-        self.summary = TextText('summary', 4).text
-        self.episode_number = TextEntry('episode #', 5).var
-        self.mp3_link = TextEntry('mp3 link', 6).var
+        self.title = title.string_var
+        self.summary = LabeledText('summary', 4).text
+        self.episode_number = LabeledEntry('episode #', 5).string_var
+        self.mp3_link = LabeledEntry('mp3 link', 6).string_var
 
     def add_transmit_button(self):
         tk.Button(
@@ -77,23 +77,26 @@ def path_leaf(path):
     return tail or ntpath.basename(head)
 
 
-class TextEntry:
+class LabeledEntry:
     def __init__(self, label, row):
-        self.label(label, row)
-        self.var = self.field(row)
+        self.add_label(label, row)
+        self.string_var = self.add_entry(row)
 
-    def label(self, text, row):
+    def add_label(self, text, row):
         tk.Label(text=text).grid(row=row, sticky='W')
 
-    def field(self, row):
-        var = tk.StringVar()
-        self.entry = tk.Entry(textvariable=var)
+    def add_entry(self, row):
+        string_var = tk.StringVar()
+        self.entry = tk.Entry(textvariable=string_var)
         self.entry.grid(row=row, column=1)
 
-        return var
+        return string_var
+
+    def set_width(self, width):
+        self.entry.config(width=width)
 
 
-class TextText:
+class LabeledText:
     def __init__(self, label, row):
         self.label(label, row)
         self.field(row)
